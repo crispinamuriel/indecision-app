@@ -1,5 +1,6 @@
 'use strict';
 
+/* eslint-disable react/react-in-jsx-scope */
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 console.log('app.js is running');
@@ -7,7 +8,8 @@ console.log('app.js is running');
 
 var app = {
   title: 'Indecision App',
-  subtitle: 'Put your life in the hands of a computer'
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['One', 'Two']
 };
 var template = React.createElement(
   'div',
@@ -17,10 +19,15 @@ var template = React.createElement(
     null,
     app.title
   ),
-  React.createElement(
+  app.subtitle && React.createElement(
     'p',
     null,
     app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length ? 'Here are your options' : 'No options'
   ),
   React.createElement(
     'ol',
@@ -38,14 +45,10 @@ var template = React.createElement(
   )
 );
 
-var userName = 'Miki';
-var userAge = 36;
-var userLocation = 'New York';
-var user = {
-  name: 'Jason',
-  age: 30,
-  location: 'Philadelphia'
-};
+var name = 'Miki';
+var age = 36;
+var location = 'New York';
+var user = { age: age, name: name, location: location };
 
 function getLocation(location) {
   return location ? React.createElement(
@@ -62,9 +65,9 @@ var template2 = React.createElement(
   React.createElement(
     'h1',
     null,
-    user.name
+    user.name ? user.name : "Anonymous"
   ),
-  React.createElement(
+  user.age && user.age >= 18 && React.createElement(
     'p',
     null,
     'Age: ',
@@ -74,4 +77,4 @@ var template2 = React.createElement(
 );
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template2, appRoot);
+ReactDOM.render(template, appRoot);
