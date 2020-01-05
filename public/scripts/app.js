@@ -1,22 +1,52 @@
 'use strict';
 
-// console.log('yoyoyo');
+//import React from 'react;
+//import ReactDOM from 'react-DOM';
 
-// const square = function (x) {
-//   return x * x;
-// }
+var count = 0;
 
-// const squared = (x) => x * x;
+function addCount() {
+  count++;
+  appRender();
+}
 
-// console.log(square(8));
-// console.log(squared(8));
-var getFirstName1 = function getFirstName1(fullName) {
-  return fullName.split(' ')[0];
-};
+function minus() {
+  count--;
+  appRender();
+}
 
-var getFirstName = function getFirstName(fullName) {
-  return fullName.split(' ')[0];
-};
+function reset() {
+  count = 0;
+  appRender();
+}
 
-console.log(getFirstName('Jennifer Muriel'));
-console.log(getFirstName1('Andrew Mead'));
+function appRender() {
+  var returnedJSX = React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'h1',
+      null,
+      'Count: ',
+      count
+    ),
+    React.createElement(
+      'button',
+      { onClick: addCount },
+      '+1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: minus },
+      '-1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: reset },
+      'reset'
+    )
+  );
+  ReactDOM.render(returnedJSX, document.getElementById('app'));
+}
+
+appRender();
