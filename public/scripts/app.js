@@ -1,27 +1,69 @@
 'use strict';
 
-//import React from 'react;
-//import ReactDOM from 'react-DOM';
+/* eslint-disable react/react-in-jsx-scope */
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+console.log('app.js is running');
+// JSX - JavaScript XML - a javascript syntax extention provided to us by react, way to define our templates (components) and inject our data into those templates
+
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['One', 'Two']
+};
+var template = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    app.title
+  ),
+  app.subtitle && React.createElement(
+    'p',
+    null,
+    app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length ? 'Here are your options' : 'No options'
+  ),
+  React.createElement(
+    'ol',
+    null,
+    React.createElement(
+      'li',
+      null,
+      'Item one'
+    ),
+    React.createElement(
+      'li',
+      null,
+      'Item two'
+    )
+  )
+);
 
 var count = 0;
-
-function addCount() {
+function addOne() {
   count++;
-  appRender();
+  renderCounterApp();
 }
 
 function minus() {
   count--;
-  appRender();
+  renderCounterApp();
 }
-
 function reset() {
   count = 0;
-  appRender();
+  renderCounterApp();
 }
 
-function appRender() {
-  var returnedJSX = React.createElement(
+var appRoot = document.getElementById('app');
+
+var renderCounterApp = function renderCounterApp() {
+  var counter = React.createElement(
     'div',
     null,
     React.createElement(
@@ -32,7 +74,7 @@ function appRender() {
     ),
     React.createElement(
       'button',
-      { onClick: addCount },
+      { onClick: addOne },
       '+1'
     ),
     React.createElement(
@@ -46,7 +88,7 @@ function appRender() {
       'reset'
     )
   );
-  ReactDOM.render(returnedJSX, document.getElementById('app'));
-}
+  ReactDOM.render(counter, appRoot);
+};
 
-appRender();
+renderCounterApp();
