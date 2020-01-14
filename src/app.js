@@ -1,8 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 // import React from 'react';
 // import ReactDOM from 'react-dom';
-console.log('app.js is running');
-// JSX - JavaScript XML - a javascript syntax extention provided to us by react, way to define our templates (components) and inject our data into those templates
 
 const app = {
   title: 'Indecision App',
