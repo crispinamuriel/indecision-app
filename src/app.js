@@ -1,50 +1,39 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
-// import React from 'react';
-// import ReactDOM from 'react-dom';
 
+console.log('App.js is running!');
+
+//JSX - JavaScript XML
 const app = {
-  title: 'Indecision App',
-  subtitle: 'Put your life in the hands of a computer',
-  options: []
+  title: "Indecision App",
+  subtitle: "Put your life in the hands of a computer.™"
 };
 
-const onRemoveAll = () => {
-  app.options = [];
-  renderApp();
+let template = (
+  <div>
+    <h1>{app.title}</h1>
+    <p>{app.subtitle}</p>
+    <ol>
+      <li>Item one</li>
+      <li>Item two</li>
+    </ol>
+  </div>
+);
+
+const user = {
+  name: 'Jenn Muriel',
+  age: '36',
+  location: 'Flushing, NY'
 }
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+const templateTwo = (
+  <div>
+    <h1>{user.name}</h1>
+    <p>Age: {user.age}</p>
+    <p>Location: {user.location}</p>
+  </div>
+);
 
-  const option = e.target.elements.option.value;
+var appRoot = document.getElementById('app');
 
-  if (option) {
-    app.options.push(option);
-    e.target.elements.option.value = '';
-    renderApp();
-  }
-}
-
-const appRoot = document.getElementById('app');
-
-const renderApp = () => {
- const template = (
-   <div>
-     <h1>{app.title}</h1>
-     {app.subtitle && <p>{app.subtitle}</p>}
-     <p>{app.options.length ? 'Here are your options' : 'No options'}</p>
-     <button type="reset" onClick={onRemoveAll}>Remove All</button>
-     <ol>
-       {app.options.map((option, i) => <li key={i}>{option}</li>)}
-     </ol>
-     <form onSubmit={handleSubmit}>
-       <input type="text" name="option" placeholder="type your option" />
-       <button type="submit">Add Option</button>
-     </form>
-   </div>
- );
-
- ReactDOM.render(template, appRoot);
-}
-
-renderApp();
+ReactDOM.render(template, appRoot);
