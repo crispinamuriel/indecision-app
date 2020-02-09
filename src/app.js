@@ -5,12 +5,12 @@ console.log('App.js is running!');
 
 //JSX - JavaScript XML
 const app = {
-  title: "Indecision App",
-  subtitle: "Put your life in the hands of a computer.™",
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer.™',
   options: ['Eat hamburger']
 };
 
-let template = (
+const template = (
   <div>
     <h1>{app.title}</h1>
     {app.subtitle && <p>{app.subtitle}</p>}
@@ -43,6 +43,6 @@ const templateTwo = (
   </div>
 );
 
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);

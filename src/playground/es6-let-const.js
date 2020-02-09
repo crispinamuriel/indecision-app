@@ -71,9 +71,22 @@ if (fullName) {
 }
 
 //this console.log Errors because const is block scoped.
-console.log(firstNameConst);
+// console.log(firstNameConst);
 //app.js:75 Uncaught ReferenceError: firstNameConst is not defined
 
 
 //Var - Function scoped only
 //const /let - Function AND Block level scoped
+
+
+//in order to expose var/const variables to the global scope of the file you can
+//first declare the variable name as undefined in the global scope
+let firstNameGlobal;
+
+if (fullName) {
+  //assigning firstNameGlobal whichis undefined, a new value. Defining it later on inside of the block scope
+  firstNameGlobal = fullName.split(' ')[0];
+  console.log(firstNameGlobal);
+}
+
+console.log(firstNameGlobal);
