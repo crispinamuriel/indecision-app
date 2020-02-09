@@ -1,82 +1,81 @@
-"use strict";
+'use strict';
 
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/react-in-jsx-scope */
+console.log('hello');
+/*
+//The point of this file is to provide knowledge about var vs let
 
-console.log('App.js is running!');
 
-//JSX - JavaScript XML
-var app = {
-  title: "Indecision App",
-  subtitle: "Put your life in the hands of a computer.™",
-  options: ['Eat hamburger']
-};
+//var variables can be redefined, we can have duplicate declarations with no error
+var nameVar = 'Andrew';
+var nameVar = 'Mike';
+console.log('nameVar', nameVar);
 
-var template = React.createElement(
-  "div",
-  null,
-  React.createElement(
-    "h1",
-    null,
-    app.title
-  ),
-  app.subtitle && React.createElement(
-    "p",
-    null,
-    app.subtitle
-  ),
-  React.createElement(
-    "p",
-    null,
-    app.options.length > 0 ? 'Here are your options:' : 'No options'
-  ),
-  React.createElement(
-    "ol",
-    null,
-    app.options.map(function (option) {
-      return React.createElement(
-        "li",
-        { key: option },
-        option
-      );
-    })
-  )
-);
 
-var user = {
-  name: 'Andrew',
-  age: 26,
-  location: 'New York'
-};
+//let will not allow duplicate declarations, and this code will error
+//TypeError: src/playground/es6-let-const.js: Duplicate declaration "nameLet"
+let nameLet = 'Jenn';
+nameLet = 'Daniel';
+//let nameLet = 'Andrew';
+console.log('nameLet', nameLet);
 
-var getLocation = function getLocation(location) {
-  if (location) {
-    return React.createElement(
-      "p",
-      null,
-      "Location: ",
-      location
-    );
-  }
-};
+const nameConst = 'Frank';
+//TypeError: src/playground/es6-let-const.js: Duplicate declaration "nameConst"
+// const nameConst = 'Gunther';
+console.log('nameConst', nameConst);
 
-var templateTwo = React.createElement(
-  "div",
-  null,
-  React.createElement(
-    "h1",
-    null,
-    user.name ? user.name : 'Anonymous'
-  ),
-  user.age && user.age > 17 && React.createElement(
-    "p",
-    null,
-    "Age: ",
-    user.age
-  ),
-  getLocation(user.location)
-);
+//with both let and const you cannot redefine variables
+// with const you cannot reassign a variable as well.
+*/
 
-var appRoot = document.getElementById('app');
+/*
+//Scope - Function Scope
+//var based variables are function scoped
+//meaning that each variable is specific to the function that it is created inside of and cannot be accessed outside
 
-ReactDOM.render(template, appRoot);
+function getPetName() {
+  var petName = 'Hal';
+  return petName;
+}
+
+getPetName();
+//console.log(petName); //This console log errors because petname is defined within the function scope which is not accessible outside of the function
+
+const petName = getPetName();
+console.log(petName); //This does not error because it is now defined outside of the function (in the same scope)
+
+//The same thing is true for let/const they are also function scoped
+*/
+
+//Block scoping - with var vs const/let
+//when something is block level scoped, not only is it bound to functions, it is also bound to code level blocks
+//things like the code block to a for loop or a for/if statement
+
+//var
+var fullName = 'Jenn Muriel';
+
+if (fullName) {
+  var firstName = fullName.split(' ')[0];
+  console.log(firstName);
+}
+
+// with var based variables, they are function scoped
+//which means that firstName where it stands is globally scoped to this file, it is inside of an 'if' statement this is not a function.
+
+console.log(firstName);
+
+//const / let
+
+var fullNameConst = "Dan Muriel";
+
+if (fullName) {
+  var _firstNameConst = fullNameConst.split(" ")[0];
+  console.log(_firstNameConst);
+}
+
+//this console.log Errors because const is block scoped.
+console.log(firstNameConst);
+//app.js:75 Uncaught ReferenceError: firstNameConst is not defined
+
+
+//Var - Function scoped only
+//const /let - Function AND Block level scoped
