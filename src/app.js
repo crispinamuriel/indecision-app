@@ -6,31 +6,40 @@ console.log('App.js is running!');
 //JSX - JavaScript XML
 const app = {
   title: "Indecision App",
-  subtitle: "Put your life in the hands of a computer.™"
+  subtitle: "Put your life in the hands of a computer.™",
+  options: ['Eat hamburger']
 };
 
 let template = (
   <div>
     <h1>{app.title}</h1>
-    <p>{app.subtitle}</p>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    <p>{app.options.length > 0 ? 'Here are your options:' : 'No options'}</p>
     <ol>
-      <li>Item one</li>
-      <li>Item two</li>
+      {app.options.map(option => (
+        <li key={option}>{option}</li>
+      ))}
     </ol>
   </div>
 );
 
 const user = {
-  name: 'Jenn Muriel',
-  age: '36',
-  location: 'Flushing, NY'
+  name: 'Andrew',
+  age: 26,
+  location: 'New York'
+}
+
+const getLocation = (location) => {
+  if (location) {
+  return <p>Location: {location}</p>;
+  }
 }
 
 const templateTwo = (
   <div>
-    <h1>{user.name}</h1>
-    <p>Age: {user.age}</p>
-    <p>Location: {user.location}</p>
+    <h1>{user.name ? user.name : 'Anonymous'}</h1>
+    {(user.age && user.age > 17) && <p>Age: {user.age}</p>}
+    {getLocation(user.location)}
   </div>
 );
 
