@@ -1,5 +1,3 @@
-'use strict';
-
 console.log('working');
 
 //es6 arrow function differences / improvements
@@ -13,22 +11,18 @@ console.log('working');
 
 // console.log(add(55, 1, 1001));
 
-var addArrowFunction = function addArrowFunction(a, b) {
-  return a + b;
-};
+const addArrowFunction = (a, b) => a + b;
 
 console.log(addArrowFunction(10, 2));
 
-var user = {
+const user = {
   name: 'Jenn',
   cities: ['Bakersfield', 'New York', 'Leon'],
-  printPlacesLived: function printPlacesLived() {
-    var _this = this;
-
-    this.cities.forEach(function (place) {
-      console.log(_this.name + ' has lived in ' + place + '.');
-    });
+  printPlacesLived() {
+    this.cities.forEach((place) => {
+      console.log(`${this.name} has lived in ${place}.`);
+    })
   }
-};
+}
 
 user.printPlacesLived();
