@@ -11,18 +11,32 @@ console.log('working');
 
 // console.log(add(55, 1, 1001));
 
-const addArrowFunction = (a, b) => a + b;
+const addArrowFunction = (a, b) => a + b; //arrow functions  DO NOT have access to arguments object,  'this' keyword is no longer bound!
 
 console.log(addArrowFunction(10, 2));
 
 const user = {
   name: 'Jenn',
   cities: ['Bakersfield', 'New York', 'Leon'],
-  printPlacesLived() {
-    this.cities.forEach((place) => {
-      console.log(`${this.name} has lived in ${place}.`);
+  printPlacesLived() { //es6 method definition syntax: this method has to be an es5 method to use the 'this' keyword inside!
+    this.cities.forEach((place) => { //this inside of the arrow function is using the parent's context of 'this'
+      console.log(`${this.name} has lived in ${place}.`); //the arrow function does not bind it's own 'this' value!
     })
+  },
+  printArrayOfPlacesLived() {
+    return this.cities.map((city) => `${this.name} has lived in ${city}!`);
   }
 }
 
 user.printPlacesLived();
+console.log(user.printArrayOfPlacesLived());
+
+const mult = {
+  numbers: [10, 20, 30, 40],
+  multBy: 3,
+  multiply() {
+    return this.numbers.map((num) => num * this.multBy);
+  }
+}
+
+console.log(mult.multiply());
