@@ -9,7 +9,8 @@ console.log('App.js is running!');
 var app = {
   title: 'Indecision App',
   subtitle: 'Put your life in the hands of a computer.™',
-  options: []
+  options: [],
+  selected: ''
 };
 
 var submitOption = function submitOption(e) {
@@ -26,6 +27,12 @@ var submitOption = function submitOption(e) {
 var removeAll = function removeAll() {
   app.options = [];
   appRender();
+};
+
+var selectOption = function selectOption() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var option = app.options[randomNum];
+  alert(option);
 };
 
 var appRender = function appRender() {
@@ -45,7 +52,12 @@ var appRender = function appRender() {
     React.createElement(
       'p',
       null,
-      app.options.length > 0 ? 'Here are your options:' : 'No options'
+      app.options.length > 0 ? "Here are your options:" : "No options"
+    ),
+    React.createElement(
+      'button',
+      { disabled: app.options.length < 2, onClick: selectOption },
+      'What should I do?'
     ),
     React.createElement(
       'button',
@@ -60,7 +72,8 @@ var appRender = function appRender() {
           'li',
           { key: option },
           option
-        );
+        ) //the key prop goes into the parent JSX element
+        ;
       })
     ),
     React.createElement(
