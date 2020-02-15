@@ -1,17 +1,72 @@
 'use strict';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 console.log('working as intended');
 
-var Person = function Person(name) {
-  _classCallCheck(this, Person);
+var Person = function () {
+  function Person() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+    var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-  this.name = name;
-};
+    _classCallCheck(this, Person);
 
-var me = new Person('Jenn');
+    this.name = name;
+    this.age = age;
+  }
+
+  _createClass(Person, [{
+    key: 'sayHello',
+    value: function sayHello() {
+      console.log('Hi, I am ' + this.name + '!');
+    }
+  }, {
+    key: 'getDescription',
+    value: function getDescription() {
+      return this.name + ' is ' + this.age + ' year(s) old.';
+    }
+  }]);
+
+  return Person;
+}();
+
+var Student = function (_Person) {
+  _inherits(Student, _Person);
+
+  function Student(name, age, major) {
+    _classCallCheck(this, Student);
+
+    var _this = _possibleConstructorReturn(this, (Student.__proto__ || Object.getPrototypeOf(Student)).call(this, name, age));
+
+    _this.major = major;
+    return _this;
+  }
+
+  _createClass(Student, [{
+    key: 'hasMajor',
+    value: function hasMajor() {
+      return !!this.major;
+    }
+  }]);
+
+  return Student;
+}(Person);
+
+var me = new Student('Jenn', 36, 'Liberal Studies');
 console.log(me);
+me.sayHello();
+console.log(me.getDescription());
 
-var andrew = new Person('Andrew Mead');
+var andrew = new Person('Andrew Mead', 26);
 console.log(andrew);
+console.log(andrew.getDescription());
+
+var newUser = new Person();
+newUser.sayHello();
+console.log(newUser.getDescription());
