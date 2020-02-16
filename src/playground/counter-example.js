@@ -1,3 +1,43 @@
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state  = {
+      count: 0
+    }
+    this.handleAddCount = this.handleAddCount.bind(this);
+    this.handleMinusCount = this.handleMinusCount.bind(this);
+    this.handleResetCount = this.handleResetCount.bind(this);
+  }
+  handleAddCount() {
+    this.setState({
+      count: this.state.count + 1
+    });
+  }
+  handleMinusCount() {
+    this.setState({
+      count: this.state.count - 1
+    });
+  }
+  handleResetCount() {
+    this.setState({
+      count:  0
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Counter: {this.state.count}</h1>
+        <button onClick={this.handleAddCount}>+</button>
+        <button onClick={this.handleMinusCount}>-</button>
+        <button onClick={this.handleResetCount}>Reset</button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Counter />, document.getElementById('app'));
+
 // //import React from 'react;
 // //import ReactDOM from 'react-DOM';
 
@@ -32,41 +72,41 @@
 
 // appRender();
 
-let count = 0;
+// let count = 0;
 
-const addCount = () => {
-  count++;
-  console.log(count);
-  appRender();
-};
-const minusCount = () => {
-  count--;
-  console.log(count);
-  appRender();
-};
-const resetFunc = () => {
-  count = 0;
-  console.log(count);
-  appRender();
-};
+// const addCount = () => {
+//   count++;
+//   console.log(count);
+//   appRender();
+// };
+// const minusCount = () => {
+//   count--;
+//   console.log(count);
+//   appRender();
+// };
+// const resetFunc = () => {
+//   count = 0;
+//   console.log(count);
+//   appRender();
+// };
 
-const appRender = () => {
-  const templateTwo = (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={() => {
-      addCount()
-      }}>+1</button>
-      <button onClick={minusCount}>-1</button>
-      <button onClick={resetFunc}>reset</button>
-    </div>
-  );
-  const appRoot = document.getElementById("app");
+// const appRender = () => {
+//   const templateTwo = (
+//     <div>
+//       <h1>Count: {count}</h1>
+//       <button onClick={() => {
+//       addCount()
+//       }}>+1</button>
+//       <button onClick={minusCount}>-1</button>
+//       <button onClick={resetFunc}>reset</button>
+//     </div>
+//   );
+//   const appRoot = document.getElementById("app");
 
-  ReactDOM.render(templateTwo, appRoot);
-};
+//   ReactDOM.render(templateTwo, appRoot);
+// };
 
-appRender();
+// appRender();
 
 // function that is set up on the button
 // event listener listens for a button click

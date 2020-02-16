@@ -1,30 +1,6 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/no-multi-comp */
 /* eslint-disable react/react-in-jsx-scope */
-
-const obj = {
-  name: 'Vikram',
-  getName() {
-    return this.name;
-  }
-}
-
-const getName = obj.getName.bind(obj);
-
-console.log(getName());
-
-const optionsArray = ["wash dishes", "go shopping"];
-
-const addOptionFunction = (e) => {
-  e.preventDefault();
-  const option = e.target.option.value;
-  if (option) {
-    optionsArray.push(option);
-    e.target.option.value =  '';
-    console.log(optionsArray)
-  }
-}
-
 class IndecisionApp extends React.Component {
   render() {
     const title = 'Indecision';
@@ -95,7 +71,7 @@ class Options extends React.Component {
   }
 
   render() {
-    console.log(this.props.options)
+    console.log(this.props.options);
     return (
       <div>
         <button onClick={this.handleRemoveAll}>Remove All</button>
