@@ -61,8 +61,8 @@ class Action extends React.Component {
   render() {
     return (
       <div>
-         <button disabled={!this.props.hasOptions} onClick={this.props.handlePick}>What should I do?</button><br />
-         {this.props.hasOptions && <button onClick={this.props.handleRemoveAll}>Remove All</button>}
+         <button type="submit" disabled={!this.props.hasOptions} onClick={this.props.handlePick}>What should I do?</button><br />
+         {this.props.hasOptions && <button type="submit" onClick={this.props.handleRemoveAll}>Remove All</button>}
       </div>
     )
   }

@@ -125,13 +125,13 @@ var Action = function (_React$Component3) {
         null,
         React.createElement(
           'button',
-          { disabled: !this.props.hasOptions, onClick: this.props.handlePick },
+          { type: 'submit', disabled: !this.props.hasOptions, onClick: this.props.handlePick },
           'What should I do?'
         ),
         React.createElement('br', null),
         this.props.hasOptions && React.createElement(
           'button',
-          { onClick: this.props.handleRemoveAll },
+          { type: 'submit', onClick: this.props.handleRemoveAll },
           'Remove All'
         )
       );
